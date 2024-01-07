@@ -29,3 +29,6 @@ Para cada caso se hace un test y una vez se pasa se hace un commit indicando el 
 - Un hiato se produce cuando se dan dos vocales abiertas consecutivas (se separan las vocales en grupos distintos).
 - En `cafeína`, la `í` es abierta y la `e` también.
 - En `salíais`, la primera `í` y la `a` son abiertas, se separan, sin embargo como la segunda `i` es cerrada, permanece unida a la a y se separan en `í`, `ai`
+
+### 2.4 Trabajo con mayusculas
+- Debe seguir funcionando independientemente de si las palabras estan escritas en mayuscula o minuscula y mantener el tipo original

@@ -9,9 +9,13 @@ def test_grupos_vocalicos_diptongos_triptongos():
     assert vowels_groups('cigüeña') == ['i', 'üe', 'a']
     assert vowels_groups('evacuáis') == ['e', 'a', 'uái']
 
-def test_grupos_silabicos_hiatos():
+def test_grupos_vocalicos_hiatos():
     assert vowels_groups("cafeína") == ['a', 'e', 'í', 'a']
     assert vowels_groups("salíais") == ['a', 'í', 'ai']
+
+def test_grupos_vocalicos_mayusculas():
+    assert vowels_groups("cAfeÍna") == ['A', 'e', 'Í', 'a']
+    assert vowels_groups("salÍaIs") == ['a', 'Í', 'aI']
 
 
     
