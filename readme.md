@@ -65,3 +65,11 @@ git push -u origin main
 ```
 git flow init
 ```
+
+## 5. Crear Producto
+
+1. Silabeador
+
+Con la informacion del [documento de base](docs/requisitos.pdf), crearemos la funcionalidad suficiente para romper cualquier palabra o lista de palabras en castellano a silabas.
+
+Ver (silabeador)[docs/silabeador.md]
