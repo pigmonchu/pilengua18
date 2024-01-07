@@ -72,4 +72,4 @@ git flow init
 
 Con la informacion del [documento de base](docs/requisitos.pdf), crearemos la funcionalidad suficiente para romper cualquier palabra o lista de palabras en castellano a silabas.
 
-Ver (silabeador)[docs/silabeador.md]
+Ver [silabeador](docs/silabeador.md)
