@@ -3,14 +3,22 @@ closed_vowels = [ 'i', 'u', 'ü']
 vowels = open_vowels + closed_vowels
 
 def vowels_groups(word):
-    # return list(filter(lambda l: l in vowels, word))
     groups = []
     group = ''
+    prev_open_vowel = False
     for letter in word:
-        if letter in vowels:
+        if letter in closed_vowels:
             group += letter
+        elif letter in open_vowels and not prev_open_vowel:
+            group += letter
+            prev_open_vowel = True
+        elif letter in open_vowels:            
+            groups.append(group)
+            prev_open_vowel = False
+            group = letter
         else:
             groups.append(group)
+            prev_open_vowel = False
             group = ''
     
     groups.append(group)

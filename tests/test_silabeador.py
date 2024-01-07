@@ -7,6 +7,11 @@ def test_grupos_vocalicos_basicos():
 def test_grupos_vocalicos_diptongos_triptongos():
     assert vowels_groups('caucho') == ['au', 'o']
     assert vowels_groups('cigüeña') == ['i', 'üe', 'a']
+    assert vowels_groups('evacuáis') == ['e', 'a', 'uái']
+
+def test_grupos_silabicos_hiatos():
+    assert vowels_groups("cafeína") == ['a', 'e', 'í', 'a']
+    assert vowels_groups("salíais") == ['a', 'í', 'ai']
 
 
     
