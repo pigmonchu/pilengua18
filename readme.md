@@ -59,3 +59,9 @@ git branch -M main
 ```
 git push -u origin main
 ```
+
+## 4. Inicializar gitflow
+- Inicializar gitflow
+```
+git flow init
+```
