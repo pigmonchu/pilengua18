@@ -32,3 +32,8 @@ Para cada caso se hace un test y una vez se pasa se hace un commit indicando el 
 
 ### 2.4 Trabajo con mayusculas
 - Debe seguir funcionando independientemente de si las palabras estan escritas en mayuscula o minuscula y mantener el tipo original
+
+### 2.5 Localizar la constante o grupo de constantes a la izquierda del grupo vocalico.
+- Usaremos la palabra `compruebo`, la primera silaba es facil solo tiene una `c`, la segunda tiene `pr` pero no debe incluir la `m` y la tercera vuelve a ser sencilla. 
+- Es posible que para poder cruzar los grupos de vocales con el resto de la palabra nos interese meter la posicion del grupo en la palabra, afectando a todos los tests anteriores.
+- Y lo mejor es, entonces, devolver tuplas, tal que `(posicion: int, grupo: str)`. Lo haré con namedTuples
