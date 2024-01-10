@@ -42,3 +42,7 @@ Para cada caso se hace un test y una vez se pasa se hace un commit indicando el 
 ### 2.6 Restos consonantes tras los grupos vocalicos
 
 - Crear funcion syllables, devolverá la lista de silabas, ya no se usa SyllabicGroup
+
+### 2.7 El tratamiento de la y griega.
+
+Ahora mismo casi funciona pero el tratamiento de la y es al azar. En el caso de ayer nos la trata como consonante a la derecha dado que no la reconoce como consonante a la izquierda. Y es de hecho una semivocal, a veces actua como vocal y a veces como consonante.

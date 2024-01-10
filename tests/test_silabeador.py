@@ -61,6 +61,8 @@ def test_create_syllabic_group():
     assert sg.position == 1
     assert sg.string == 'o'
 
+def test_y_como_consonante():
+    assert syllables('ayer') == ['a', 'yer']
 '''
 def test_constante_izquierda():
     assert left_consonant("compruebo") == ['co', 'prue', 'bo']
