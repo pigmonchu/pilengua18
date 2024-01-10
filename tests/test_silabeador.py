@@ -1,51 +1,63 @@
-from silabeador import vowels_groups, left_consonant, SillabicGroup
+from silabeador import vowels_groups, left_consonant, SyllabicGroup, syllables
 
 def test_grupos_vocalicos_basicos():
-    assert vowels_groups('constante') == [SillabicGroup(1, 'o'), 
-                                          SillabicGroup(5, 'a'), 
-                                          SillabicGroup(8, 'e')]
-    assert vowels_groups('psicólogo') == [SillabicGroup(2, 'i'), 
-                                          SillabicGroup(4, 'ó'), 
-                                          SillabicGroup(6, 'o'), 
-                                          SillabicGroup(8, 'o')]
+    assert vowels_groups('constante') == [SyllabicGroup(1, 'o'), 
+                                          SyllabicGroup(5, 'a'), 
+                                          SyllabicGroup(8, 'e')]
+    assert vowels_groups('psicólogo') == [SyllabicGroup(2, 'i'), 
+                                          SyllabicGroup(4, 'ó'), 
+                                          SyllabicGroup(6, 'o'), 
+                                          SyllabicGroup(8, 'o')]
 
 def test_grupos_vocalicos_diptongos_triptongos():
-    assert vowels_groups('caucho') == [SillabicGroup(1, 'au'), 
-                                       SillabicGroup(5, 'o')]
-    assert vowels_groups('cigüeña') == [SillabicGroup(1, 'i'), 
-                                        SillabicGroup(3, 'üe'), 
-                                        SillabicGroup(6, 'a')]
-    assert vowels_groups('evacuáis') == [SillabicGroup(0, 'e'), 
-                                         SillabicGroup(2, 'a'), 
-                                         SillabicGroup(4, 'uái')]
+    assert vowels_groups('caucho') == [SyllabicGroup(1, 'au'), 
+                                       SyllabicGroup(5, 'o')]
+    assert vowels_groups('cigüeña') == [SyllabicGroup(1, 'i'), 
+                                        SyllabicGroup(3, 'üe'), 
+                                        SyllabicGroup(6, 'a')]
+    assert vowels_groups('evacuáis') == [SyllabicGroup(0, 'e'), 
+                                         SyllabicGroup(2, 'a'), 
+                                         SyllabicGroup(4, 'uái')]
 
 def test_grupos_vocalicos_hiatos():
-    assert vowels_groups("cafeína") == [SillabicGroup(1, 'a'), 
-                                        SillabicGroup(3, 'e'), 
-                                        SillabicGroup(4, 'í'), 
-                                        SillabicGroup(6, 'a')]
-    assert vowels_groups("salíais") == [SillabicGroup(1, 'a'), 
-                                        SillabicGroup(3, 'í'), 
-                                        SillabicGroup(4, 'ai')]
+    assert vowels_groups("cafeína") == [SyllabicGroup(1, 'a'), 
+                                        SyllabicGroup(3, 'e'), 
+                                        SyllabicGroup(4, 'í'), 
+                                        SyllabicGroup(6, 'a')]
+    assert vowels_groups("salíais") == [SyllabicGroup(1, 'a'), 
+                                        SyllabicGroup(3, 'í'), 
+                                        SyllabicGroup(4, 'ai')]
 
 def test_grupos_vocalicos_mayusculas():
-    assert vowels_groups("cAfeÍna") == [SillabicGroup(1, 'A'), 
-                                        SillabicGroup(3, 'e'), 
-                                        SillabicGroup(4, 'Í'), 
-                                        SillabicGroup(6, 'a')]
-    assert vowels_groups("salÍaIs") == [SillabicGroup(1, 'a'), 
-                                        SillabicGroup(3, 'Í'), 
-                                        SillabicGroup(4, 'aI')]
+    assert vowels_groups("cAfeÍna") == [SyllabicGroup(1, 'A'), 
+                                        SyllabicGroup(3, 'e'), 
+                                        SyllabicGroup(4, 'Í'), 
+                                        SyllabicGroup(6, 'a')]
+    assert vowels_groups("salÍaIs") == [SyllabicGroup(1, 'a'), 
+                                        SyllabicGroup(3, 'Í'), 
+                                        SyllabicGroup(4, 'aI')]
 
 def test_constante_izquierda_basico():
-    assert left_consonant("mala") == [SillabicGroup(0, 'ma'), 
-                                      SillabicGroup(2, 'la')]
-    assert left_consonant("macho") == [SillabicGroup(0, 'ma'), 
-                                       SillabicGroup(2, 'cho')]
+    assert left_consonant("mala") == [SyllabicGroup(0, 'ma'), 
+                                      SyllabicGroup(2, 'la')]
+    assert left_consonant("macho") == [SyllabicGroup(0, 'ma'), 
+                                       SyllabicGroup(2, 'cho')]
+    assert left_consonant("manchar") == [SyllabicGroup(0, 'ma'),
+                                         SyllabicGroup(3, 'cha')]
 
+def test_separate_syllables():
+    word = "constante"
+    assert vowels_groups(word) == [SyllabicGroup(1, 'o'),
+                                   SyllabicGroup(5, 'a'),
+                                   SyllabicGroup(8, 'e')]
+    assert left_consonant(word) == [SyllabicGroup(0, 'co'),
+                                    SyllabicGroup(4, 'ta'),
+                                    SyllabicGroup(7, 'te')]
+    
+    assert syllables(word) == ['cons', 'tan', 'te']
 
-def test_create_sillabic_group():
-    sg = SillabicGroup(1, 'o')
+def test_create_syllabic_group():
+    sg = SyllabicGroup(1, 'o')
     assert sg.position == 1
     assert sg.string == 'o'
 

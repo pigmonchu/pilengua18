@@ -38,3 +38,7 @@ Para cada caso se hace un test y una vez se pasa se hace un commit indicando el 
 - Es posible que para poder cruzar los grupos de vocales con el resto de la palabra nos interese meter la posicion del grupo en la palabra, afectando a todos los tests anteriores.
 - Y lo mejor es, entonces, devolver tuplas, tal que `(posicion: int, grupo: str)`. Lo haré con namedTuples.
 - Pasamos a devolver las consonantes o grupos de consonantes antes de las vocales.
+
+### 2.6 Restos consonantes tras los grupos vocalicos
+
+- Crear funcion syllables, devolverá la lista de silabas, ya no se usa SyllabicGroup

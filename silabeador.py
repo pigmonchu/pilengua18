@@ -7,7 +7,7 @@ simple_consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 double_consonants = ['bs', 'll', 'rr', 'bl', 'cl', 'gl', 'fl', 'kl', 'pl', 'br', 'cr', 'dr', 'fr', 'gr', 'kr', 'pr', 'tr', 'ps', 'ch']
 
 
-SillabicGroup = namedtuple("SillabicGroup", "position string")
+SyllabicGroup = namedtuple("SyllabicGroup", "position string")
 
 def vowels_groups(word):
     groups = []
@@ -21,15 +21,15 @@ def vowels_groups(word):
             group += letter
             prev_open_vowel = True
         elif compare_letter in open_vowels:            
-            groups.append(SillabicGroup(pos - len(group), group))
+            groups.append(SyllabicGroup(pos - len(group), group))
             prev_open_vowel = False
             group = letter
         else:
-            groups.append(SillabicGroup(pos - len(group), group))
+            groups.append(SyllabicGroup(pos - len(group), group))
             prev_open_vowel = False
             group = ''
     
-    groups.append(SillabicGroup(pos +1 - len(group), group))
+    groups.append(SyllabicGroup(pos +1 - len(group), group))
     return list(filter(lambda g: g.string != '', groups))
 
 def left_consonant(word):
@@ -37,9 +37,28 @@ def left_consonant(word):
     for ix, vg in enumerate(vgs):
         pos, string = vg
         if pos > 1 and word[pos-2: pos] in double_consonants:
-            vgs[ix] = SillabicGroup(pos-2, word[pos-2: pos] + string)
+            vgs[ix] = SyllabicGroup(pos-2, word[pos-2: pos] + string)
         elif word[pos-1: pos] in simple_consonants:
-            vgs[ix] = SillabicGroup(pos-1, word[pos-1: pos] + string)
+            vgs[ix] = SyllabicGroup(pos-1, word[pos-1: pos] + string)
     return vgs
+
+def syllables(word):
+    sg = left_consonant(word)
+    syls = []
+    
+    ix_sg = 0
+    syl = ''
+    for ix_letter in range(len(word)):
+        if ix_sg >= len(sg) - 1 or ix_letter < sg[ix_sg + 1].position:
+            syl += word[ix_letter]
+        else:
+            syls.append(syl)
+            ix_sg += 1
+            syl = word[ix_letter]
+    syls.append(syl)
+    return syls
+
+
+
 
         
